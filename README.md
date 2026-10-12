@@ -47,8 +47,6 @@ desimithaas-frontend/
 ├── styles.css             # All CSS styling with CSS variables
 ├── script.js              # JavaScript interactivity & cart management
 ├── README.md              # Project documentation
-├── FULLSTACK_LEARNING_ROADMAP.md  # Backend learning guide
-└── QUICK_ACTION_CHECKLIST.md      # Development checklist
 ```
 
 ---
@@ -213,33 +211,6 @@ Tested on:
 - Tablets (iPad, Android tablets)
 
 ---
-
-## 🚀 Full-Stack Roadmap
-
-This frontend is ready to be integrated with a backend! 
-
-### **Phase 1: Backend (Weeks 1-2)**
-- Express.js API setup
-- PostgreSQL database
-- RESTful endpoints
-
-### **Phase 2: Authentication (Weeks 3-4)**
-- User registration & login
-- JWT tokens
-- Password hashing (bcrypt)
-
-### **Phase 3: Integration (Week 5)**
-- Connect frontend to backend
-- Real product data from database
-- User authentication flow
-
-### **Phase 4: Payments (Week 6)**
-- Razorpay integration
-- Order processing
-- Payment verification
-
-See **FULLSTACK_LEARNING_ROADMAP.md** for detailed backend learning guide!
-
 ---
 
 ## 📊 File Sizes & Performance
@@ -345,7 +316,6 @@ Want to understand the code better?
 - **HTML**: [MDN Web Docs - HTML](https://developer.mozilla.org/en-US/docs/Web/HTML)
 - **CSS**: [MDN Web Docs - CSS](https://developer.mozilla.org/en-US/docs/Web/CSS)
 - **JavaScript**: [JavaScript.info](https://javascript.info)
-- **Full-Stack**: See **FULLSTACK_LEARNING_ROADMAP.md**
 
 ---
 
@@ -379,10 +349,9 @@ Currently none! If you find any bugs, please open an issue.
 
 Have questions or need help?
 
-1. Check **FULLSTACK_LEARNING_ROADMAP.md** for learning guide
-2. Review code comments in `script.js`
-3. Check FAQs on contact page
-4. Open an issue on GitHub
+1. Review code comments in `script.js`
+2. Check FAQs on contact page
+3. Open an issue on GitHub
 
 ---
 
@@ -410,4 +379,4 @@ Have questions or need help?
 ---
 
 *Last Updated: October 2026*
-*Made with ❤️ by Kartiki Sharma*
+*Made with ❤️ by Kartik Sharma*
