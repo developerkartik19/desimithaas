@@ -3,18 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Products - Desimithaas</title>
+    <title>Products — Desimithaas Traditional Sweets</title>
+    <meta name="description" content="Browse our complete collection of authentic handcrafted Thekua sweets. Gift boxes, dry fruits, jaggery, sesame varieties and festival packs available.">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <!-- Announcement Bar -->
+    <div class="announcement-bar">
+        <span>🎁 Free Delivery on orders above ₹500 &nbsp;·&nbsp; ✦ Freshly prepared daily batches &nbsp;·&nbsp; 🚚 Pan India delivery available</span>
+    </div>
+
     <!-- Navigation Header -->
-    <header class="navbar">
+    <header class="navbar" id="navbar">
         <div class="container">
             <div class="nav-content">
-                <div class="logo">
+                <a href="index.html" class="logo" style="text-decoration: none;">
                     <div class="logo-icon">D</div>
                     <span class="logo-text">Desimithaas</span>
-                </div>
+                </a>
                 
                 <nav class="nav-menu">
                     <a href="index.html" class="nav-link">Home</a>
@@ -25,16 +31,16 @@
 
                 <div class="nav-actions">
                     <div class="search-bar">
-                        <input type="text" placeholder="Search for traditional sweets...">
+                        <input type="text" placeholder="Search sweets...">
                     </div>
                     <div class="cart-icon">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <circle cx="9" cy="21" r="1"></circle>
                             <circle cx="20" cy="21" r="1"></circle>
                             <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
                         </svg>
                     </div>
-                    <button class="btn-login">Login</button>
+                    <a href="login.html" class="btn-login">Login</a>
                 </div>
             </div>
         </div>
@@ -44,7 +50,7 @@
     <section class="page-header">
         <div class="container">
             <h1>Our Products</h1>
-            <p>Discover our complete collection of authentic traditional sweets</p>
+            <p>Discover our complete collection of authentic traditional sweets, crafted with love.</p>
         </div>
     </section>
 
@@ -88,145 +94,292 @@
                         </label>
                     </div>
 
-                    <button class="btn btn-primary" style="width: 100%; margin-top: 20px;">Apply Filters</button>
+                    <button id="applyFiltersBtn" class="btn btn-primary" style="width: 100%; margin-top: 12px;">Apply Filters</button>
+                    <button id="resetFiltersBtn" class="btn btn-secondary" style="width: 100%; margin-top: 8px; font-size: 13px; padding: 10px;">Reset Filters</button>
                 </aside>
 
                 <!-- Products Grid -->
                 <div class="products-main">
                     <div class="products-toolbar">
-                        <p class="results-count">Showing 12 products</p>
-                        <select class="sort-select">
+                        <p class="results-count" id="resultsCount">Showing 12 products</p>
+                        <select class="sort-select" id="sortSelect">
                             <option value="">Sort by</option>
                             <option value="popularity">Most Popular</option>
                             <option value="price-low">Price: Low to High</option>
                             <option value="price-high">Price: High to Low</option>
-                            <option value="newest">Newest First</option>
                             <option value="rating">Highest Rated</option>
                         </select>
                     </div>
 
-                    <div class="products-grid">
+                    <div class="products-grid" id="productsGrid">
                         <!-- Product Card 1 -->
-                        <div class="product-card">
+                        <div class="product-card reveal" data-category="gift-box" data-price="799" data-rating="5" data-reviews="45">
                             <div class="product-image">
-                                <div class="placeholder-circle"></div>
+                                <img src="images/thekua-gift-box.jpg" alt="Thekua Gift Box">
+                                <span class="product-badge">Bestseller</span>
                             </div>
-                            <h3>Thekua Gift Box</h3>
-                            <div class="rating">
-                                <span class="stars">★★★★★</span>
-                                <span class="rating-value">45 reviews</span>
-                            </div>
-                            <div class="product-price">₹799</div>
-                            <div class="product-weight">800 gm</div>
-                            <p class="product-desc">Premium assorted thekua in a beautiful gift box. Perfect for celebrations.</p>
-                            <div class="product-actions">
-                                <button class="btn-add-cart">Add to Cart</button>
-                                <button class="btn-buy">Buy Now</button>
+                            <div class="product-info">
+                                <h3>Thekua Gift Box</h3>
+                                <div class="rating">
+                                    <span class="stars">★★★★★</span>
+                                    <span class="rating-value">45 reviews</span>
+                                </div>
+                                <div class="product-price">₹799</div>
+                                <div class="product-weight">800 gm</div>
+                                <p class="product-desc">Premium assorted thekua in a beautiful gift box. Perfect for celebrations.</p>
+                                <div class="product-actions">
+                                    <button class="btn-add-cart">Add to Cart</button>
+                                    <button class="btn-buy">Buy Now</button>
+                                </div>
                             </div>
                         </div>
 
                         <!-- Product Card 2 -->
-                        <div class="product-card">
+                        <div class="product-card reveal" data-category="dry-fruits" data-price="449" data-rating="4" data-reviews="32">
                             <div class="product-image">
-                                <div class="placeholder-circle"></div>
+                                <img src="images/thekua-dry-fruits.jpg" alt="Dry Fruits Thekua">
+                                <span class="product-badge">Popular</span>
                             </div>
-                            <h3>Dry Fruits Thekua</h3>
-                            <div class="rating">
-                                <span class="stars">★★★★☆</span>
-                                <span class="rating-value">32 reviews</span>
-                            </div>
-                            <div class="product-price">₹449</div>
-                            <div class="product-weight">500 gm</div>
-                            <p class="product-desc">Rich and nutty thekua loaded with almonds, cashews, and dates.</p>
-                            <div class="product-actions">
-                                <button class="btn-add-cart">Add to Cart</button>
-                                <button class="btn-buy">Buy Now</button>
+                            <div class="product-info">
+                                <h3>Dry Fruits Thekua</h3>
+                                <div class="rating">
+                                    <span class="stars">★★★★☆</span>
+                                    <span class="rating-value">32 reviews</span>
+                                </div>
+                                <div class="product-price">₹449</div>
+                                <div class="product-weight">500 gm</div>
+                                <p class="product-desc">Rich and nutty thekua loaded with almonds, cashews, and dates.</p>
+                                <div class="product-actions">
+                                    <button class="btn-add-cart">Add to Cart</button>
+                                    <button class="btn-buy">Buy Now</button>
+                                </div>
                             </div>
                         </div>
 
                         <!-- Product Card 3 -->
-                        <div class="product-card">
+                        <div class="product-card reveal" data-category="traditional" data-price="299" data-rating="5" data-reviews="67">
                             <div class="product-image">
-                                <div class="placeholder-circle"></div>
+                                <img src="images/thekua-traditional.jpg" alt="Traditional Thekua">
                             </div>
-                            <h3>Traditional Thekua</h3>
-                            <div class="rating">
-                                <span class="stars">★★★★★</span>
-                                <span class="rating-value">67 reviews</span>
-                            </div>
-                            <div class="product-price">₹299</div>
-                            <div class="product-weight">500 gm</div>
-                            <p class="product-desc">Classic thekua recipe passed down through generations. Pure authentic taste.</p>
-                            <div class="product-actions">
-                                <button class="btn-add-cart">Add to Cart</button>
-                                <button class="btn-buy">Buy Now</button>
+                            <div class="product-info">
+                                <h3>Traditional Thekua</h3>
+                                <div class="rating">
+                                    <span class="stars">★★★★★</span>
+                                    <span class="rating-value">67 reviews</span>
+                                </div>
+                                <div class="product-price">₹299</div>
+                                <div class="product-weight">500 gm</div>
+                                <p class="product-desc">Classic thekua recipe passed down through generations. Pure authentic taste.</p>
+                                <div class="product-actions">
+                                    <button class="btn-add-cart">Add to Cart</button>
+                                    <button class="btn-buy">Buy Now</button>
+                                </div>
                             </div>
                         </div>
 
                         <!-- Product Card 4 -->
-                        <div class="product-card">
+                        <div class="product-card reveal" data-category="traditional" data-price="349" data-rating="5" data-reviews="28">
                             <div class="product-image">
-                                <div class="placeholder-circle"></div>
+                                <img src="images/thekua-jaggery.jpg" alt="Jaggery Thekua">
+                                <span class="product-badge">New</span>
                             </div>
-                            <h3>Jaggery Thekua</h3>
-                            <div class="rating">
-                                <span class="stars">★★★★★</span>
-                                <span class="rating-value">28 reviews</span>
-                            </div>
-                            <div class="product-price">₹349</div>
-                            <div class="product-weight">500 gm</div>
-                            <p class="product-desc">Made with pure jaggery for a healthier, more natural sweetness.</p>
-                            <div class="product-actions">
-                                <button class="btn-add-cart">Add to Cart</button>
-                                <button class="btn-buy">Buy Now</button>
+                            <div class="product-info">
+                                <h3>Jaggery Thekua</h3>
+                                <div class="rating">
+                                    <span class="stars">★★★★★</span>
+                                    <span class="rating-value">28 reviews</span>
+                                </div>
+                                <div class="product-price">₹349</div>
+                                <div class="product-weight">500 gm</div>
+                                <p class="product-desc">Made with pure jaggery for a healthier, more natural sweetness.</p>
+                                <div class="product-actions">
+                                    <button class="btn-add-cart">Add to Cart</button>
+                                    <button class="btn-buy">Buy Now</button>
+                                </div>
                             </div>
                         </div>
 
                         <!-- Product Card 5 -->
-                        <div class="product-card">
+                        <div class="product-card reveal" data-category="traditional" data-price="399" data-rating="4" data-reviews="19">
                             <div class="product-image">
-                                <div class="placeholder-circle"></div>
+                                <img src="images/thekua-sesame.jpg" alt="Honey Sesame Thekua">
                             </div>
-                            <h3>Honey Sesame Thekua</h3>
-                            <div class="rating">
-                                <span class="stars">★★★★☆</span>
-                                <span class="rating-value">19 reviews</span>
-                            </div>
-                            <div class="product-price">₹399</div>
-                            <div class="product-weight">500 gm</div>
-                            <p class="product-desc">Aromatic thekua with sesame seeds and pure honey. Nutritious and delicious.</p>
-                            <div class="product-actions">
-                                <button class="btn-add-cart">Add to Cart</button>
-                                <button class="btn-buy">Buy Now</button>
+                            <div class="product-info">
+                                <h3>Honey Sesame Thekua</h3>
+                                <div class="rating">
+                                    <span class="stars">★★★★☆</span>
+                                    <span class="rating-value">19 reviews</span>
+                                </div>
+                                <div class="product-price">₹399</div>
+                                <div class="product-weight">500 gm</div>
+                                <p class="product-desc">Aromatic thekua with sesame seeds and pure honey. Nutritious and delicious.</p>
+                                <div class="product-actions">
+                                    <button class="btn-add-cart">Add to Cart</button>
+                                    <button class="btn-buy">Buy Now</button>
+                                </div>
                             </div>
                         </div>
 
                         <!-- Product Card 6 -->
-                        <div class="product-card">
+                        <div class="product-card reveal" data-category="gift-box seasonal" data-price="1299" data-rating="5" data-reviews="53">
                             <div class="product-image">
-                                <div class="placeholder-circle"></div>
+                                <img src="images/thekua-hero.jpg" alt="Festival Special Pack">
+                                <span class="product-badge">Festival</span>
                             </div>
-                            <h3>Festival Special Pack</h3>
-                            <div class="rating">
-                                <span class="stars">★★★★★</span>
-                                <span class="rating-value">53 reviews</span>
+                            <div class="product-info">
+                                <h3>Festival Special Pack</h3>
+                                <div class="rating">
+                                    <span class="stars">★★★★★</span>
+                                    <span class="rating-value">53 reviews</span>
+                                </div>
+                                <div class="product-price">₹1,299</div>
+                                <div class="product-weight">2 kg</div>
+                                <p class="product-desc">Complete assortment with 5 varieties of thekua. Perfect for festivals and celebrations.</p>
+                                <div class="product-actions">
+                                    <button class="btn-add-cart">Add to Cart</button>
+                                    <button class="btn-buy">Buy Now</button>
+                                </div>
                             </div>
-                            <div class="product-price">₹1299</div>
-                            <div class="product-weight">2 kg</div>
-                            <p class="product-desc">Complete assortment with 5 varieties of thekua. Perfect for festivals.</p>
-                            <div class="product-actions">
-                                <button class="btn-add-cart">Add to Cart</button>
-                                <button class="btn-buy">Buy Now</button>
+                        </div>
+
+                        <!-- Product Card 7 -->
+                        <div class="product-card reveal" data-category="dry-fruits gift-box" data-price="549" data-rating="5" data-reviews="48">
+                            <div class="product-image">
+                                <img src="images/thekua-dry-fruits.jpg" alt="Kesar Pista Dry Fruit Thekua">
+                                <span class="product-badge">Royal</span>
+                            </div>
+                            <div class="product-info">
+                                <h3>Kesar Pista Dry Fruit</h3>
+                                <div class="rating">
+                                    <span class="stars">★★★★★</span>
+                                    <span class="rating-value">48 reviews</span>
+                                </div>
+                                <div class="product-price">₹549</div>
+                                <div class="product-weight">500 gm</div>
+                                <p class="product-desc">Infused with fragrant Kashmiri saffron strands, crushed pistachios, and pure cow ghee.</p>
+                                <div class="product-actions">
+                                    <button class="btn-add-cart">Add to Cart</button>
+                                    <button class="btn-buy">Buy Now</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Product Card 8 -->
+                        <div class="product-card reveal" data-category="traditional" data-price="399" data-rating="5" data-reviews="74">
+                            <div class="product-image">
+                                <img src="images/thekua-traditional.jpg" alt="Pure Desi Cow Ghee Thekua">
+                                <span class="product-badge">Signature</span>
+                            </div>
+                            <div class="product-info">
+                                <h3>Pure Cow Ghee Thekua</h3>
+                                <div class="rating">
+                                    <span class="stars">★★★★★</span>
+                                    <span class="rating-value">74 reviews</span>
+                                </div>
+                                <div class="product-price">₹399</div>
+                                <div class="product-weight">500 gm</div>
+                                <p class="product-desc">Slow-cooked in golden A2 Bilona cow ghee with fragrant green cardamom and sweet fennel seeds.</p>
+                                <div class="product-actions">
+                                    <button class="btn-add-cart">Add to Cart</button>
+                                    <button class="btn-buy">Buy Now</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Product Card 9 -->
+                        <div class="product-card reveal" data-category="gift-box seasonal" data-price="899" data-rating="5" data-reviews="89">
+                            <div class="product-image">
+                                <img src="images/thekua-gift-box.jpg" alt="Chhath Mahaprasad Hamper">
+                                <span class="product-badge">Festive</span>
+                            </div>
+                            <div class="product-info">
+                                <h3>Chhath Mahaprasad Hamper</h3>
+                                <div class="rating">
+                                    <span class="stars">★★★★★</span>
+                                    <span class="rating-value">89 reviews</span>
+                                </div>
+                                <div class="product-price">₹899</div>
+                                <div class="product-weight">1 kg</div>
+                                <p class="product-desc">Sacred edition prepared with holy traditions: wheat, desi ghee, and jaggery in brass-look box.</p>
+                                <div class="product-actions">
+                                    <button class="btn-add-cart">Add to Cart</button>
+                                    <button class="btn-buy">Buy Now</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Product Card 10 -->
+                        <div class="product-card reveal" data-category="traditional" data-price="369" data-rating="5" data-reviews="26">
+                            <div class="product-image">
+                                <img src="images/thekua-jaggery.jpg" alt="Roasted Coconut & Jaggery Thekua">
+                                <span class="product-badge">Crispy</span>
+                            </div>
+                            <div class="product-info">
+                                <h3>Coconut &amp; Jaggery Thekua</h3>
+                                <div class="rating">
+                                    <span class="stars">★★★★★</span>
+                                    <span class="rating-value">26 reviews</span>
+                                </div>
+                                <div class="product-price">₹369</div>
+                                <div class="product-weight">500 gm</div>
+                                <p class="product-desc">Crunchy golden thekua packed with freshly grated roasted coconut flakes and organic cane jaggery.</p>
+                                <div class="product-actions">
+                                    <button class="btn-add-cart">Add to Cart</button>
+                                    <button class="btn-buy">Buy Now</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Product Card 11 -->
+                        <div class="product-card reveal" data-category="gift-box seasonal" data-price="1599" data-rating="5" data-reviews="61">
+                            <div class="product-image">
+                                <img src="images/thekua-hero.jpg" alt="Royal Heritage Celebration Box">
+                                <span class="product-badge">Luxury</span>
+                            </div>
+                            <div class="product-info">
+                                <h3>Royal Heritage Box</h3>
+                                <div class="rating">
+                                    <span class="stars">★★★★★</span>
+                                    <span class="rating-value">61 reviews</span>
+                                </div>
+                                <div class="product-price">₹1,599</div>
+                                <div class="product-weight">2.5 kg</div>
+                                <p class="product-desc">Grand celebration hamper featuring 6 signature varieties with satin ribbon and greeting card.</p>
+                                <div class="product-actions">
+                                    <button class="btn-add-cart">Add to Cart</button>
+                                    <button class="btn-buy">Buy Now</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Product Card 12 -->
+                        <div class="product-card reveal" data-category="traditional" data-price="429" data-rating="4" data-reviews="22">
+                            <div class="product-image">
+                                <img src="images/thekua-sesame.jpg" alt="Golden Sesame & Millet Thekua">
+                                <span class="product-badge">Healthy</span>
+                            </div>
+                            <div class="product-info">
+                                <h3>Sesame &amp; Millet Thekua</h3>
+                                <div class="rating">
+                                    <span class="stars">★★★★☆</span>
+                                    <span class="rating-value">22 reviews</span>
+                                </div>
+                                <div class="product-price">₹429</div>
+                                <div class="product-weight">450 gm</div>
+                                <p class="product-desc">Guilt-free wholesome blend of organic ragi, whole wheat flour, golden sesame, and brown jaggery.</p>
+                                <div class="product-actions">
+                                    <button class="btn-add-cart">Add to Cart</button>
+                                    <button class="btn-buy">Buy Now</button>
+                                </div>
                             </div>
                         </div>
                     </div>
 
                     <!-- Pagination -->
-                    <div class="pagination">
-                        <button class="page-btn active">1</button>
-                        <button class="page-btn">2</button>
-                        <button class="page-btn">3</button>
-                        <button class="page-btn">Next →</button>
+                    <div class="pagination" id="productsPagination">
+                        <button class="page-btn active" data-page="1">1</button>
+                        <button class="page-btn" data-page="2">2</button>
+                        <button class="page-btn" data-page="all" style="width: auto; padding: 0 18px;">View All (12)</button>
                     </div>
                 </div>
             </div>
@@ -239,7 +392,7 @@
             <div class="footer-content">
                 <div class="footer-section">
                     <div class="footer-logo">
-                        <div class="logo-icon">T</div>
+                        <div class="logo-icon">D</div>
                         <span>Desimithaas</span>
                     </div>
                     <p>Authentic traditional sweets made with love and served fresh. Bringing you the taste of heritage with every bite.</p>

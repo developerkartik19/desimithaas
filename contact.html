@@ -3,214 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us - Desimithaas</title>
+    <title>Contact Us — Desimithaas Authentic Sweets</title>
+    <meta name="description" content="Get in touch with Desimithaas. Contact us for bulk orders, corporate gifting, order inquiries, or queries about our traditional handcrafted Thekua.">
     <link rel="stylesheet" href="styles.css">
-    <style>
-        .page-header {
-            background: linear-gradient(135deg, #CC6600, #ff8800);
-            color: white;
-            padding: 80px 0;
-            text-align: center;
-        }
-
-        .page-header h1 {
-            font-size: 48px;
-            margin-bottom: 15px;
-            font-weight: 700;
-        }
-
-        .page-header p {
-            font-size: 18px;
-            opacity: 0.95;
-        }
-
-        .contact-content {
-            padding: 80px 0;
-        }
-
-        .contact-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            margin-bottom: 60px;
-        }
-
-        .contact-info {
-            display: flex;
-            flex-direction: column;
-            gap: 30px;
-        }
-
-        .contact-item {
-            display: flex;
-            gap: 20px;
-        }
-
-        .contact-icon {
-            width: 60px;
-            height: 60px;
-            background: rgba(204, 102, 0, 0.1);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--primary-color);
-            font-size: 28px;
-            flex-shrink: 0;
-        }
-
-        .contact-details h3 {
-            color: var(--text-dark);
-            margin-bottom: 5px;
-        }
-
-        .contact-details p {
-            color: var(--text-light);
-            line-height: 1.6;
-        }
-
-        .contact-details a {
-            color: var(--primary-color);
-            text-decoration: none;
-            font-weight: 600;
-            transition: var(--transition);
-        }
-
-        .contact-details a:hover {
-            text-decoration: underline;
-        }
-
-        .contact-form {
-            background: var(--light-color);
-            padding: 40px;
-            border-radius: 12px;
-        }
-
-        .contact-form h2 {
-            color: var(--text-dark);
-            margin-bottom: 30px;
-            font-size: 28px;
-        }
-
-        .form-group {
-            margin-bottom: 25px;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 10px;
-            color: var(--text-dark);
-            font-weight: 600;
-            font-size: 15px;
-        }
-
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 12px 15px;
-            border: 2px solid var(--border-color);
-            border-radius: 6px;
-            font-family: inherit;
-            font-size: 15px;
-            transition: var(--transition);
-            resize: none;
-        }
-
-        .form-group input:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: var(--primary-color);
-            box-shadow: 0 0 0 3px rgba(204, 102, 0, 0.1);
-        }
-
-        .form-group textarea {
-            min-height: 150px;
-            font-family: inherit;
-        }
-
-        .contact-form .btn {
-            width: 100%;
-        }
-
-        .faq-section {
-            margin-top: 80px;
-        }
-
-        .faq-section h2 {
-            font-size: 38px;
-            margin-bottom: 40px;
-            color: var(--text-dark);
-            text-align: center;
-        }
-
-        .faq-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 30px;
-        }
-
-        .faq-item {
-            background: var(--light-color);
-            padding: 25px;
-            border-radius: 12px;
-            cursor: pointer;
-            transition: var(--transition);
-        }
-
-        .faq-item:hover {
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        }
-
-        .faq-item h3 {
-            color: var(--text-dark);
-            margin-bottom: 12px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .faq-item .toggle {
-            font-size: 20px;
-            color: var(--primary-color);
-        }
-
-        .faq-item p {
-            color: var(--text-light);
-            line-height: 1.6;
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease;
-        }
-
-        .faq-item.active p {
-            max-height: 500px;
-            margin-top: 15px;
-        }
-
-        @media (max-width: 768px) {
-            .contact-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .faq-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .page-header h1 {
-                font-size: 32px;
-            }
-        }
-    </style>
 </head>
 <body>
+    <!-- Announcement Bar -->
+    <div class="announcement-bar">
+        <span>🎁 Free Delivery on orders above ₹500 &nbsp;·&nbsp; ✦ Freshly prepared daily batches &nbsp;·&nbsp; 🚚 Pan India delivery available</span>
+    </div>
+
     <!-- Navigation Header -->
-    <header class="navbar">
+    <header class="navbar" id="navbar">
         <div class="container">
             <div class="nav-content">
-                <div class="logo">
+                <a href="index.html" class="logo" style="text-decoration: none;">
                     <div class="logo-icon">D</div>
                     <span class="logo-text">Desimithaas</span>
-                </div>
+                </a>
                 
                 <nav class="nav-menu">
                     <a href="index.html" class="nav-link">Home</a>
@@ -221,16 +31,16 @@
 
                 <div class="nav-actions">
                     <div class="search-bar">
-                        <input type="text" placeholder="Search for traditional sweets...">
+                        <input type="text" placeholder="Search sweets...">
                     </div>
-                    <div class="cart-icon">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <div class="cart-icon" id="cartIcon">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <circle cx="9" cy="21" r="1"></circle>
                             <circle cx="20" cy="21" r="1"></circle>
                             <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
                         </svg>
                     </div>
-                    <button class="btn-login">Login</button>
+                    <a href="login.html" class="btn-login">Login</a>
                 </div>
             </div>
         </div>
@@ -239,8 +49,9 @@
     <!-- Page Header -->
     <section class="page-header">
         <div class="container">
-            <h1>Contact Us</h1>
-            <p>We'd love to hear from you. Get in touch with us today!</p>
+            <span class="hero-tag" style="margin-bottom: 14px; display: inline-flex;">We are here to help</span>
+            <h1>Get in Touch</h1>
+            <p>Have questions about our authentic recipes, custom gift hampers, or corporate orders? We’d love to hear from you.</p>
         </div>
     </section>
 
@@ -249,129 +60,149 @@
         <div class="container">
             <div class="contact-grid">
                 <!-- Contact Information -->
-                <div class="contact-info">
-                    <h2>Get In Touch</h2>
-                    <p>Have a question or suggestion? We're here to help. Contact us through any of the channels below.</p>
+                <div class="contact-info reveal">
+                    <h2>Reach Out to Us</h2>
+                    <p>Whether you're looking for order assistance, bulk celebration orders, or simply want to share your sweet memories with us, connect anytime through our channels below.</p>
                     
                     <div class="contact-item">
                         <div class="contact-icon">📞</div>
                         <div class="contact-details">
-                            <h3>Phone</h3>
+                            <h3>Phone &amp; WhatsApp</h3>
                             <p><a href="tel:+918235530099">+91 8235530099</a></p>
-                            <p>Available Mon-Sat, 9:00 AM - 6:00 PM IST</p>
+                            <p>Mon – Sat, 9:00 AM – 6:00 PM IST</p>
                         </div>
                     </div>
 
                     <div class="contact-item">
                         <div class="contact-icon">📧</div>
                         <div class="contact-details">
-                            <h3>Email</h3>
+                            <h3>Email Support</h3>
                             <p><a href="mailto:hello@thekua.com">hello@thekua.com</a></p>
-                            <p>We'll respond within 24 hours</p>
+                            <p>Direct responses within 24 business hours</p>
                         </div>
                     </div>
 
                     <div class="contact-item">
                         <div class="contact-icon">📍</div>
                         <div class="contact-details">
-                            <h3>Address</h3>
-                            <p>Desimithaas Trading<br>Ranchi, Jharkhand 834525<br>India</p>
+                            <h3>Kitchen &amp; Office</h3>
+                            <p>Desimithaas Traditional Foods<br>Ranchi, Jharkhand 834525<br>India</p>
                         </div>
                     </div>
 
                     <div class="contact-item">
                         <div class="contact-icon">⏰</div>
                         <div class="contact-details">
-                            <h3>Business Hours</h3>
-                            <p>Monday - Saturday: 9:00 AM - 6:00 PM<br>Sunday: Closed<br>Holidays: Closed</p>
+                            <h3>Operating Hours</h3>
+                            <p>Monday to Saturday: 9:00 AM – 6:00 PM<br>Sunday: Kitchen Preparation Only (Closed for visits)</p>
+                        </div>
+                    </div>
+
+                    <!-- Direct WhatsApp Callout -->
+                    <div style="background: rgba(212, 168, 83, 0.06); border: 1px dashed var(--border-hover); border-radius: var(--radius); padding: 20px 24px; display: flex; align-items: center; gap: 16px; margin-top: 10px;">
+                        <span style="font-size: 28px;">💬</span>
+                        <div>
+                            <strong style="color: var(--gold-light); font-size: 15px; display: block; margin-bottom: 4px;">Instant WhatsApp Assistance</strong>
+                            <p style="margin: 0; font-size: 13px; color: var(--text-secondary);">Direct messaging for urgent festival hamper bookings and dispatch status.</p>
                         </div>
                     </div>
                 </div>
 
                 <!-- Contact Form -->
-                <div class="contact-form">
-                    <h2>Send us a Message</h2>
+                <div class="contact-form reveal">
+                    <h2>Send Us a Message</h2>
                     <form id="contactForm">
                         <div class="form-group">
                             <label for="name">Full Name *</label>
-                            <input type="text" id="name" name="name" required>
+                            <input type="text" id="name" name="name" placeholder="Enter your full name" required>
                         </div>
 
                         <div class="form-group">
                             <label for="email">Email Address *</label>
-                            <input type="email" id="email" name="email" required>
+                            <input type="email" id="email" name="email" placeholder="example@domain.com" required>
                         </div>
 
                         <div class="form-group">
                             <label for="phone">Phone Number</label>
-                            <input type="tel" id="phone" name="phone">
+                            <input type="tel" id="phone" name="phone" placeholder="+91 98765 43210">
                         </div>
 
                         <div class="form-group">
-                            <label for="subject">Subject *</label>
-                            <input type="text" id="subject" name="subject" required>
+                            <label for="subject">Inquiry Type *</label>
+                            <select id="subject" name="subject" class="sort-select" style="width: 100%; padding: 14px 18px;" required>
+                                <option value="">Select a reason</option>
+                                <option value="General Question">General Question</option>
+                                <option value="Order Status / Tracking">Order Status / Tracking</option>
+                                <option value="Bulk / Corporate Gifting">Bulk / Corporate Gifting</option>
+                                <option value="Feedback & Quality">Feedback &amp; Quality</option>
+                            </select>
                         </div>
 
                         <div class="form-group">
                             <label for="message">Message *</label>
-                            <textarea id="message" name="message" required></textarea>
+                            <textarea id="message" name="message" placeholder="How can we help you today?" required></textarea>
                         </div>
 
-                        <button type="submit" class="btn btn-primary">Send Message</button>
+                        <button type="submit" class="btn btn-primary">Send Message →</button>
                     </form>
                 </div>
             </div>
 
             <!-- FAQ Section -->
-            <div class="faq-section">
-                <h2>Frequently Asked Questions</h2>
+            <div class="faq-section reveal">
+                <div style="text-align: center; margin-bottom: 30px;">
+                    <span class="hero-tag" style="margin-bottom: 12px; display: inline-flex;">Quick Answers</span>
+                    <h2>Frequently Asked Questions</h2>
+                    <p style="color: var(--text-secondary); max-width: 540px; margin: 0 auto;">Everything you need to know about our preparation, packaging, shelf life, and Pan-India delivery.</p>
+                </div>
+                
                 <div class="faq-grid">
                     <div class="faq-item">
                         <h3>
-                            How long does delivery take?
+                            How long does Pan-India delivery take?
                             <span class="toggle">+</span>
                         </h3>
-                        <p>We provide delivery across Pan India. Delivery typically takes 3-7 business days depending on your location. Express delivery is available for selected areas.</p>
+                        <p>We deliver nationwide across India. Regular transit typically takes 3 to 6 business days depending on your pincode. We prioritize quick dispatches so your sweets arrive at peak freshness.</p>
                     </div>
 
                     <div class="faq-item">
                         <h3>
-                            Are your products fresh?
+                            Are the sweets prepared fresh on order?
                             <span class="toggle">+</span>
                         </h3>
-                        <p>Yes! All our products are prepared fresh daily using traditional methods. We use food-grade packaging to ensure freshness during transit.</p>
+                        <p>Yes! Every single item is handcrafted in small daily batches using pure Desi Ghee, wholesome wheat flour, and natural sweeteners. We never use cold-storage pre-packaged items.</p>
                     </div>
 
                     <div class="faq-item">
                         <h3>
-                            What's your return policy?
+                            What is the shelf life of Thekua?
                             <span class="toggle">+</span>
                         </h3>
-                        <p>We offer a 7-day return policy for damaged or unsatisfactory products. If you receive a damaged item, contact us immediately with photos, and we'll send a replacement.</p>
+                        <p>Authentic Thekua has a natural shelf life of up to 30 days when kept in an airtight container away from direct sunlight and moisture. No refrigeration is required thanks to our traditional dry roasting technique.</p>
                     </div>
 
                     <div class="faq-item">
                         <h3>
-                            Do you use artificial ingredients?
+                            Do you use artificial preservatives or food colors?
                             <span class="toggle">+</span>
                         </h3>
-                        <p>No, we never use artificial ingredients or preservatives. All products are made with natural, high-quality ingredients following traditional recipes.</p>
+                        <p>Never. We adhere strictly to authentic family recipes: 100% natural spices like green cardamom and fennel, whole wheat, organic jaggery, pure desi ghee, and premium dry fruits.</p>
                     </div>
 
                     <div class="faq-item">
                         <h3>
-                            Can I place bulk orders?
+                            Can I order custom corporate gift boxes?
                             <span class="toggle">+</span>
                         </h3>
-                        <p>Yes! We offer special discounts for bulk orders. Contact us at hello@thekua.com or call +91 8235530099 for bulk pricing.</p>
+                        <p>Absolutely. We specialize in festive and corporate gifting with bespoke branding ribbons, personalized greeting messages, and assorted sweet boxes. Reach out to us via email or call for bulk rates.</p>
                     </div>
 
                     <div class="faq-item">
                         <h3>
-                            Do you offer gift wrapping?
+                            What is your damaged package replacement policy?
                             <span class="toggle">+</span>
                         </h3>
-                        <p>Yes, our Gift Box collection comes beautifully packaged. For custom gifts, please contact us directly to arrange special packaging.</p>
+                        <p>Your satisfaction is our priority. In the rare event that your package is damaged during transit, simply share photos with our support team within 48 hours and we will ship an immediate replacement.</p>
                     </div>
                 </div>
             </div>
@@ -381,9 +212,9 @@
     <!-- CTA Section -->
     <section class="cta-section">
         <div class="container">
-            <h2>Have More Questions?</h2>
-            <p>Our customer service team is always ready to help. Don't hesitate to reach out!</p>
-            <button class="btn btn-light" onclick="document.querySelector('#contactForm').scrollIntoView({behavior: 'smooth'})">Send a Message</button>
+            <h2>Ready to Taste Tradition?</h2>
+            <p>Explore our handcrafted Thekua collection made with heritage recipes and pure ingredients, delivered straight to your door.</p>
+            <button class="btn btn-primary" onclick="window.location.href='products.html'">Browse Products 🛒</button>
         </div>
     </section>
 
@@ -393,14 +224,14 @@
             <div class="footer-content">
                 <div class="footer-section">
                     <div class="footer-logo">
-                        <div class="logo-icon">T</div>
+                        <div class="logo-icon">D</div>
                         <span>Desimithaas</span>
                     </div>
                     <p>Authentic traditional sweets made with love and served fresh. Bringing you the taste of heritage with every bite.</p>
                     <div class="social-links">
-                        <a href="#" class="social-icon">f</a>
-                        <a href="#" class="social-icon">𝕏</a>
-                        <a href="#" class="social-icon">📷</a>
+                        <a href="#" class="social-icon" aria-label="Facebook">f</a>
+                        <a href="#" class="social-icon" aria-label="Twitter">𝕏</a>
+                        <a href="#" class="social-icon" aria-label="Instagram">📷</a>
                     </div>
                 </div>
 
@@ -438,39 +269,51 @@
         </div>
     </footer>
 
+    <script src="script.js"></script>
     <script>
-        // Form submission
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const formData = {
-                name: document.getElementById('name').value,
-                email: document.getElementById('email').value,
-                phone: document.getElementById('phone').value,
-                subject: document.getElementById('subject').value,
-                message: document.getElementById('message').value
-            };
+        // Form submission handling
+        const contactForm = document.getElementById('contactForm');
+        if (contactForm) {
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const submitBtn = this.querySelector('button[type="submit"]');
+                const originalText = submitBtn.innerHTML;
+                submitBtn.disabled = true;
+                submitBtn.innerHTML = 'Sending...';
 
-            // In production, send to backend
-            console.log('Form Data:', formData);
-            
-            // Show success message
-            Utils.showNotification('Message sent successfully! We will contact you soon.', 'success');
-            
-            // Reset form
-            this.reset();
-        });
+                setTimeout(() => {
+                    if (window.Utils && typeof window.Utils.showNotification === 'function') {
+                        window.Utils.showNotification('Thank you! Your message has been sent successfully.', 'success');
+                    } else {
+                        alert('Thank you! Your message has been sent.');
+                    }
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = originalText;
+                    contactForm.reset();
+                }, 800);
+            });
+        }
 
-        // FAQ toggle functionality
+        // FAQ accordion toggle functionality
         document.querySelectorAll('.faq-item').forEach(item => {
             item.addEventListener('click', function() {
-                this.classList.toggle('active');
-                const toggle = this.querySelector('.toggle');
-                toggle.textContent = this.classList.contains('active') ? '−' : '+';
+                const isActive = this.classList.contains('active');
+                
+                // Optional: close other accordions
+                document.querySelectorAll('.faq-item').forEach(other => {
+                    other.classList.remove('active');
+                    const toggle = other.querySelector('.toggle');
+                    if (toggle) toggle.textContent = '+';
+                });
+
+                if (!isActive) {
+                    this.classList.add('active');
+                    const toggle = this.querySelector('.toggle');
+                    if (toggle) toggle.textContent = '−';
+                }
             });
         });
     </script>
-
-    <script src="script.js"></script>
 </body>
 </html>
