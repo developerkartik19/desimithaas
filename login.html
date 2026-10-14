@@ -126,8 +126,8 @@
                         </div>
 
                         <div class="auth-input-wrapper">
-                            <label for="emailOrPhone">Email Address or Phone *</label>
-                            <input type="text" id="emailOrPhone" placeholder="name@example.com or +91 98765 43210" required>
+                            <label for="emailOrPhone">Email Address *</label>
+<input type="email" id="emailOrPhone" placeholder="name@example.com" required>
                         </div>
 
                         <div class="auth-input-wrapper">
@@ -233,30 +233,191 @@
 
     <script src="script.js"></script>
     <script>
-        // Dedicated login page interaction script
-        document.addEventListener('DOMContentLoaded', () => {
-            const tabSignIn = document.getElementById('tabSignIn');
-            const tabSignUp = document.getElementById('tabSignUp');
-            const formTitle = document.getElementById('formTitle');
-            const formSubtitle = document.getElementById('formSubtitle');
-            const nameGroup = document.getElementById('nameGroup');
-            const fullNameInput = document.getElementById('fullName');
-            const submitBtn = document.getElementById('submitBtn');
-            const loginForm = document.getElementById('loginForm');
-            const emailInput = document.getElementById('emailOrPhone');
-            const passwordInput = document.getElementById('password');
-            const togglePasswordBtn = document.getElementById('togglePasswordBtn');
-            const googleBtn = document.getElementById('googleLoginBtn');
-            const otpBtn = document.getElementById('otpLoginBtn');
-            const forgotLink = document.getElementById('forgotPasswordLink');
+    // Dedicated login page interaction script
+    document.addEventListener('DOMContentLoaded', () => {
+        const API = 'http://localhost:3000/api';
 
-            const authFormState = document.getElementById('authFormState');
-            const loggedInState = document.getElementById('loggedInState');
-            const profileName = document.getElementById('profileName');
-            const profileEmail = document.getElementById('profileEmail');
-            const logoutBtn = document.getElementById('logoutBtn');
+        const tabSignIn = document.getElementById('tabSignIn');
+        const tabSignUp = document.getElementById('tabSignUp');
+        const formTitle = document.getElementById('formTitle');
+        const formSubtitle = document.getElementById('formSubtitle');
+        const nameGroup = document.getElementById('nameGroup');
+        const fullNameInput = document.getElementById('fullName');
+        const submitBtn = document.getElementById('submitBtn');
+        const loginForm = document.getElementById('loginForm');
+        const emailInput = document.getElementById('emailOrPhone');
+        const passwordInput = document.getElementById('password');
+        const togglePasswordBtn = document.getElementById('togglePasswordBtn');
+        const googleBtn = document.getElementById('googleLoginBtn');
+        const otpBtn = document.getElementById('otpLoginBtn');
+        const forgotLink = document.getElementById('forgotPasswordLink');
 
-            let isSignUp = false;
+        const authFormState = document.getElementById('authFormState');
+        const loggedInState = document.getElementById('loggedInState');
+        const profileName = document.getElementById('profileName');
+        const profileEmail = document.getElementById('profileEmail');
+        const logoutBtn = document.getElementById('logoutBtn');
+
+        let isSignUp = false;
+
+        const notify = (msg, type = 'info') => {
+            if (window.Utils) window.Utils.showNotification(msg, type);
+        };
+
+        const getToken = () =>
+            localStorage.getItem('desi_token') || sessionStorage.getItem('desi_token');
+
+        function clearSession() {
+            localStorage.removeItem('desi_user');
+            localStorage.removeItem('desi_token');
+            sessionStorage.removeItem('desi_token');
+        }
+
+        // Check if user is already logged in (needs BOTH user info and a token)
+        function checkExistingSession() {
+            const session = localStorage.getItem('desi_user');
+            if (session && getToken()) {
+                try {
+                    const user = JSON.parse(session);
+                    authFormState.style.display = 'none';
+                    loggedInState.style.display = 'block';
+                    profileName.textContent = user.name || 'Friend';
+                    profileEmail.textContent = user.email || 'Member';
+                    return;
+                } catch (e) {
+                    clearSession();
+                }
+            } else if (session) {
+                // Old fake demo session without a token: remove it
+                clearSession();
+            }
+            authFormState.style.display = 'block';
+            loggedInState.style.display = 'none';
+        }
+
+        checkExistingSession();
+
+        // Tab switcher
+        tabSignIn.addEventListener('click', () => {
+            isSignUp = false;
+            tabSignIn.classList.add('active');
+            tabSignUp.classList.remove('active');
+            formTitle.textContent = 'Welcome Back';
+            formSubtitle.textContent = 'Enter your credentials to access your account & track orders.';
+            nameGroup.style.display = 'none';
+            fullNameInput.required = false;
+            submitBtn.innerHTML = 'Sign In →';
+        });
+
+        tabSignUp.addEventListener('click', () => {
+            isSignUp = true;
+            tabSignUp.classList.add('active');
+            tabSignIn.classList.remove('active');
+            formTitle.textContent = 'Create an Account';
+            formSubtitle.textContent = 'Join Desimithaas for festival specials & free Pan-India deliveries.';
+            nameGroup.style.display = 'block';
+            fullNameInput.required = true;
+            submitBtn.innerHTML = 'Create Account →';
+        });
+
+        // Password reveal toggle
+        togglePasswordBtn.addEventListener('click', () => {
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                togglePasswordBtn.textContent = '🔒';
+            } else {
+                passwordInput.type = 'password';
+                togglePasswordBtn.textContent = '👁';
+            }
+        });
+
+        // Not built yet: no fake logins
+        googleBtn.addEventListener('click', () => notify('Google login is coming soon', 'info'));
+        otpBtn.addEventListener('click', () => notify('Mobile OTP login is coming soon', 'info'));
+        forgotLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            notify('Password reset is coming soon', 'info');
+        });
+
+        // Talk to the backend
+        async function apiPost(path, body) {
+            let res;
+            try {
+                res = await fetch(API + path, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(body)
+                });
+            } catch (err) {
+                throw new Error('Cannot reach the server. Is the backend running?');
+            }
+            const data = await res.json().catch(() => ({}));
+            if (!res.ok) throw new Error(data.error || 'Something went wrong');
+            return data;
+        }
+
+        // Form submission
+        loginForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const email = emailInput.value.trim();
+            const password = passwordInput.value;
+
+            if (isSignUp && password.length < 8) {
+                notify('Password must be at least 8 characters', 'error');
+                return;
+            }
+
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = isSignUp ? 'Creating account...' : 'Signing in...';
+
+            try {
+                if (isSignUp) {
+                    await apiPost('/register', {
+                        name: fullNameInput.value.trim(),
+                        email,
+                        password
+                    });
+                }
+                const data = await apiPost('/login', { email, password });
+                saveAndLogin(data.user, data.token);
+            } catch (err) {
+                notify(err.message, 'error');
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = isSignUp ? 'Create Account →' : 'Sign In →';
+            }
+        });
+
+        function saveAndLogin(user, token) {
+            // "Remember me" unchecked = logged out when the tab closes
+            const store = document.getElementById('rememberMe').checked ? localStorage : sessionStorage;
+            store.setItem('desi_token', token);
+            localStorage.setItem('desi_user', JSON.stringify({ name: user.name, email: user.email }));
+
+            notify(`Welcome, ${user.name}! Signed in successfully.`, 'success');
+            checkExistingSession();
+
+            setTimeout(() => {
+                const referrer = document.referrer;
+                if (referrer && !referrer.includes('login.html')) {
+                    window.location.href = referrer;
+                } else {
+                    window.location.href = 'index.html';
+                }
+            }, 1200);
+        }
+
+        // Log out
+        logoutBtn.addEventListener('click', () => {
+            clearSession();
+            notify('Logged out successfully', 'info');
+            checkExistingSession();
+            submitBtn.disabled = false;
+            document.querySelectorAll('.btn-login').forEach(btn => {
+                btn.textContent = 'Login';
+            });
+        });
+    });
+</script>
 
             // Check if user is already logged in
             function checkExistingSession() {
