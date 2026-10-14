@@ -331,8 +331,6 @@ Want to understand the code better?
 - ✅ FAQ section
 
 ### **Coming Soon (v1.1.0)**
-- 🔜 User authentication backend
-- 🔜 Database integration
 - 🔜 Payment gateway (Razorpay)
 - 🔜 Order management
 - 🔜 Product reviews & ratings
@@ -371,6 +369,21 @@ Have questions or need help?
 | [GitHub Repo](https://github.com/developerkartik19/desimithaas-frontend) | Source code |
 | [Full-Stack Roadmap](./FULLSTACK_LEARNING_ROADMAP.md) | Backend guide |
 | [Action Checklist](./QUICK_ACTION_CHECKLIST.md) | Dev checklist |
+
+What I changed
+
+Added an Authentication features section, covering email/password login, Google Sign-In, hashed passwords, JWT sessions and rate limiting.
+Updated the tech stack and project structure to include the backend/ folder, Express, PostgreSQL (Neon), bcryptjs and JWT.
+Rewrote Quick Start as a full setup guide: database table, Google Client ID, .env variables, starting the server, and running the frontend with Live Server.
+Added an Authentication section with how the login flow works, an API endpoint table, and example fetch calls.
+Rewrote Security to list only what is actually implemented, and added Known limitations.
+Added Deployment notes, auth testing steps, a v1.1.0 changelog entry, and an updated Coming Soon list.
+
+Things to review
+
+The README says the live Vercel demo’s login works only once the backend is deployed, since login.html still points to localhost:3000. Update that line after you deploy the backend.
+I left some claims from the old README untouched: the performance and accessibility scores (for example “Mobile Score: 95+” and “WCAG 2.1 AA”) and “Known issues: none”. If you haven’t measured those, recruiters may notice, so I’d delete them or run Lighthouse and put in the real numbers.
+The Quick Links point to FULLSTACK_LEARNING_ROADMAP.md and QUICK_ACTION_CHECKLIST.md. Remove them if those files aren’t in the repo.
 
 ---
 
