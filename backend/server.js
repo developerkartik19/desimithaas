@@ -43,9 +43,13 @@ app.post('/api/login', authLimiter, async (req, res) => {
   if (!email || !password) return res.status(400).json({ error: 'Email and password required' });
   try {
     const { rows } = await pool.query('SELECT * FROM users WHERE email = $1', [email.trim().toLowerCase()]);
-    const user = rows[0];
-       if (!user || !user.password_hash || !(await bcrypt.compare(password, user.password_hash)))
-      return res.status(401).json({ error: 'Wrong email or password' });
+       const user = rows[0];
+   if (!user)
+     return res.status(401).json({ error: 'No account found with this email' });
+   if (!user.password_hash)
+     return res.status(401).json({ error: 'This account uses Google sign-in. Please click Continue with Google.' });
+   if (!(await bcrypt.compare(password, user.password_hash)))
+     return res.status(401).json({ error: 'Wrong password' });
 
     res.json({
       token: makeToken(user.id),
