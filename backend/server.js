@@ -5,6 +5,8 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const rateLimit = require('express-rate-limit');
 const { Pool } = require('pg');
+   const { OAuth2Client } = require('google-auth-library');
+   const googleClient = new OAuth2Client(process.env.GOOGLE_CLIENT_ID);
 
 const app = express();
 app.use(express.json());
@@ -42,7 +44,7 @@ app.post('/api/login', authLimiter, async (req, res) => {
   try {
     const { rows } = await pool.query('SELECT * FROM users WHERE email = $1', [email.trim().toLowerCase()]);
     const user = rows[0];
-    if (!user || !(await bcrypt.compare(password, user.password_hash)))
+       if (!user || !user.password_hash || !(await bcrypt.compare(password, user.password_hash)))
       return res.status(401).json({ error: 'Wrong email or password' });
 
     res.json({
@@ -70,5 +72,37 @@ app.get('/api/me', auth, async (req, res) => {
   const { rows } = await pool.query('SELECT name, email FROM users WHERE id = $1', [req.user.id]);
   res.json(rows[0]);
 });
+   app.post('/api/google', authLimiter, async (req, res) => {
+     const { credential } = req.body;
+     if (!credential) return res.status(400).json({ error: 'Missing Google credential' });
+     try {
+       // Verify the token really came from Google, for YOUR app
+       const ticket = await googleClient.verifyIdToken({
+         idToken: credential,
+         audience: process.env.GOOGLE_CLIENT_ID
+       });
+       const p = ticket.getPayload();
+       if (!p.email_verified)
+         return res.status(401).json({ error: 'Google email is not verified' });
 
+       const email = p.email.toLowerCase();
+       let { rows } = await pool.query('SELECT * FROM users WHERE email = $1', [email]);
+       let user = rows[0];
+
+       if (!user) {
+         ({ rows } = await pool.query(
+           'INSERT INTO users (name, email, google_id) VALUES ($1, $2, $3) RETURNING *',
+           [p.name || email.split('@')[0], email, p.sub]
+         ));
+         user = rows[0];
+       } else if (!user.google_id) {
+         await pool.query('UPDATE users SET google_id = $1 WHERE id = $2', [p.sub, user.id]);
+       }
+
+       res.json({ token: makeToken(user.id), user: { name: user.name, email: user.email } });
+     } catch (e) {
+       console.error(e);
+       res.status(401).json({ error: 'Google sign-in failed' });
+     }
+   });
 app.listen(3000, () => console.log('API running on http://localhost:3000'));
